@@ -8,6 +8,9 @@ var editor;
 let file_path;
 const editorPreview =
   document.getElementById("editorPreview").contentWindow.document;
+
+
+
 (function () {
   var oldLog = console.log;
   console.log = function (message) {
@@ -44,7 +47,7 @@ function setConfigurations() {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   if (params.file) {
-    file_path = "./files/" + params.file;
+    file_path = "/files/" + params.file;
   }
   if (params.language) {
     lang = params.language;
@@ -61,6 +64,24 @@ function readTextFile(file) {
         console.log(allText);
         editor.setValue(allText);
         preview.innerHTML = "";
+        run();
+        loadInstructions(file);
+      }
+    }
+  };
+  rawFile.send(null);
+}
+
+function loadInstructions(file) {
+  var filepath = file.split(".").join("-ins.");
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", filepath, false);
+  rawFile.onreadystatechange = function () {
+    if (rawFile.readyState === 4) {
+      if (rawFile.status === 200 || rawFile.status == 0) {
+        var allText = rawFile.responseText;
+        document.getElementById("ins").innerHTML = allText;
+        
       }
     }
   };
@@ -73,6 +94,8 @@ function init() {
     language: lang,
     fontSize: "16px",
     theme: "vs-dark",
+    automaticLayout: true, // <<== the important part
   });
   readTextFile(file_path);
 }
+

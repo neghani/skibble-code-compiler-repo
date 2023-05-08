@@ -19,31 +19,39 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+   
   </head>
 
   <body onload="  setConfigurations();init();">
-    <div class="container">
-        <div class="header">
-            <button class="btn btn-danger" onclick="run()">Run</button>
-            <img
-              class="logo"
-              src="https://www.skibble.tech/images/logo.png"
-              width="80"
-            />
-          </div>
+    <div class="load_container">
+      <div class="header">
+        <button class="btn btn-danger" onclick="run()">Run</button>
+        <img
+          class="logo"
+          src="https://www.skibble.tech/images/logo.png"
+          width="80"
+        />
+      </div>
       <div class="panels">
         <div class="edit panel">
-       
           <div id="editor" style="height: 400px"></div>
         </div>
         <div class="editor__preview panel">
-          <iframe id="editorPreview" frameborder="0"></iframe>
+          <iframe
+            style="width: 100%; height: 100%"
+            id="editorPreview"
+            frameborder="0"
+          ></iframe>
         </div>
       </div>
       <div class="preview">
         <h4>Output (Console)</h4>
         <div id="preview"></div>
       </div>
+    </div>
+    <div class="ins__preview">
+      <b>Instructions:</b>
+     <div class="ins" id="ins"></div>
     </div>
 
     <script>
