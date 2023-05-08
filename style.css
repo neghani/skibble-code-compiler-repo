@@ -1,0 +1,9 @@
+#preview{
+    background-color: #333333;
+    color: white;
+    padding: 20px;
+    font-size: 12px;
+}
+.error{
+    color: red !important;
+}
