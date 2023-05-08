@@ -23,9 +23,7 @@
 
   <body onload="  setConfigurations();init();">
     <div class="container">
-      <div class="row">
-        <div class="edit">
-          <div class="header">
+        <div class="header">
             <button class="btn btn-danger" onclick="run()">Run</button>
             <img
               class="logo"
@@ -33,16 +31,18 @@
               width="80"
             />
           </div>
+      <div class="panels">
+        <div class="edit panel">
+       
           <div id="editor" style="height: 400px"></div>
         </div>
-        <div class="editor__preview">
-            <iframe id="editorPreview" frameborder="0"></iframe>
-          </div>
-        <div class="preview">
-          <h4>Output (Console)</h4>
-          <div id="preview"></div>
+        <div class="editor__preview panel">
+          <iframe id="editorPreview" frameborder="0"></iframe>
         </div>
-       
+      </div>
+      <div class="preview">
+        <h4>Output (Console)</h4>
+        <div id="preview"></div>
       </div>
     </div>
 
