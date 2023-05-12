@@ -1,0 +1,47 @@
+<style>
+  input[type="text"] {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px #007bff;
+  }
+  input[type="text"]:hover {
+    background-color: #f5f5f5;
+  }
+  input[type="text"]:disabled {
+    background-color: #eee;
+    color: #999;
+    cursor: not-allowed;
+  }
+  input[type="text"]::placeholder {
+    color: #999;
+    font-style: italic;
+  }
+  input[type="text"]:valid {
+    background-color: #eaffea;
+    border-color: #28a745;
+  }
+  input[type="text"]:invalid {
+    background-color: #ffeaea;
+    border-color: #dc3545;
+  }
+
+  input[type="text"]:valid {
+    background-color: #eaffea;
+    border-color: #28a745;
+  }
+  
+  input[type="text"]:invalid {
+    background-color: #ffeaea;
+    border-color: #dc3545;
+  }
+  
+</style>
+
+<input type="text" required placeholder="Enter something"/>
+<input type="text" placeholder="This is disables state" disabled/>

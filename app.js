@@ -1,5 +1,6 @@
 // CREATE AN EDITOR
 // Initial data
+// example https://codepen.io/nibach/pen/QWbLzwJ
 let code = `    console.log("hello")    `;
 let lang = "javascript";
 var h_div = document.getElementById("editor");
@@ -8,8 +9,6 @@ var editor;
 let file_path;
 const editorPreview =
   document.getElementById("editorPreview").contentWindow.document;
-
-
 
 (function () {
   var oldLog = console.log;
@@ -26,14 +25,15 @@ const editorPreview =
 function run() {
   let value = editor.getValue();
   if (lang == "html") {
-    HTMLRun();
+    HTMLRun(value);
   } else {
     javascriptRun(value);
   }
+  return { value, lang };
 }
 
-function HTMLRun() {
-  editorPreview.body.innerHTML = editor.getValue();
+function HTMLRun(value) {
+  editorPreview.body.innerHTML = value;
 }
 function javascriptRun(value) {
   preview.innerHTML = "";
@@ -73,15 +73,14 @@ function readTextFile(file) {
 }
 
 function loadInstructions(file) {
-  var filepath = file.split(".").join("-ins.");
-  var rawFile = new XMLHttpRequest();
+  let filepath = file.split(".")[0] + "-ins.html";
+  let rawFile = new XMLHttpRequest();
   rawFile.open("GET", filepath, false);
   rawFile.onreadystatechange = function () {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
         var allText = rawFile.responseText;
         document.getElementById("ins").innerHTML = allText;
-        
       }
     }
   };
@@ -99,3 +98,35 @@ function init() {
   readTextFile(file_path);
 }
 
+function determineExtn() {
+  return lang == "html" ? ".html" : ".js";
+}
+const saveTextAsFile = () => {
+  const downloadable = run();
+  const blob = new Blob([downloadable.value], { type: "text/plain" });
+  const downloadLink = document.createElement("a");
+  const fileExtension = determineExtn();
+  downloadLink.download = `preview${fileExtension}`;
+  downloadLink.innerHTML = "Download File";
+  if (window.webkitURL) {
+    // No need to add the download element to the DOM in Webkit.
+    downloadLink.href = window.webkitURL.createObjectURL(blob);
+  } else {
+    downloadLink.href = window.URL.createObjectURL(blob);
+    downloadLink.onclick = (event) => {
+      if (event.target) {
+        document.body.removeChild(event.target);
+      }
+    };
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+  }
+
+  downloadLink.click();
+
+  if (window.webkitURL) {
+    window.webkitURL.revokeObjectURL(downloadLink.href);
+  } else {
+    window.URL.revokeObjectURL(downloadLink.href);
+  }
+};

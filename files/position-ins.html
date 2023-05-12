@@ -1,0 +1,60 @@
+<p>The CSS position property allows you to specify how an HTML element is
+    positioned on a web page. There are several position values available, including
+    "static," "relative," "absolute," "fixed," and "sticky." Each position value has
+    its own unique behavior, which can be used to achieve different layout effects.
+    Here's a brief explanation of each position value and an example of how it can
+    be used: Static: This is the default position value, which means the element is
+    positioned according to the normal document flow. Elements with a static
+    position are not affected by the top, bottom, left, or right properties.
+    Example:</p>
+<pre>&lt;divstyle="position: static">This is a static element&lt;/div&gt;</pre>
+<p>
+    Relative: This position value allows you to position an element relative to its
+    normal position. This means you can use the top, bottom, left, and right
+    properties to move the element up, down, left, or right from where it would
+    normally be placed. Example:</p>
+<pre>
+  &lt;divstyle="position: relative; top: 50px; left: 50px">
+    This is a relatively positioned element
+  &lt;/div&gt;
+</pre>
+<p>
+  Absolute: This position value allows you to position an element relative to
+  its nearest positioned ancestor element (i.e., an element with a position
+  value other than static). If there is no positioned ancestor element, the
+  element will be positioned relative to the document body. Example:
+</p>
+
+<pre>
+  &lt;div style="position: relative">
+   &lt;div style="position: absolute; top:
+  50px; left: 50px"> This is an absolutely positioned element &lt;/div&gt;
+  &gt;/div&gt;
+</pre>
+<p>
+  Fixed: This position value is similar to absolute, except the element is
+  positioned relative to the viewport (i.e., the browser window), rather than
+  relative to its parent element. Example:
+</p>
+
+<pre>
+  &lt;div style="position: fixed; top: 0; left: 0">This is a fixed
+  element&lt;/div&gt;
+</pre>
+<p>
+  Sticky: This position value allows you to position an element as either
+  relative or fixed, depending on whether the element is within the viewport. If
+  the element is within the viewport, it will be positioned relative to its
+  normal position. If the element is scrolled out of the viewport, it will
+  become fixed. Example:
+</p>
+
+<pre>
+  &lt;divstyle="position: sticky; top: 0">This is a sticky element&lt;/div&gt;
+</pre>
+<p>
+  These are just a few examples of how the CSS position property can be used to
+  position elements on a web page. By understanding the different position
+  values and how they behave, you can create complex and dynamic layouts that
+  are optimized for your website or application.
+</p>
