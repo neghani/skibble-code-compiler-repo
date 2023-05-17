@@ -16,14 +16,18 @@
   </head>
 
   <body onload="  setConfigurations();init();">
+    <div class="ins__preview">
+      <b>Instructions:</b>
+      <div class="ins" id="ins"></div>
+    </div>
     <div class="load_container">
       <div class="header">
-        <button class="btn btn-danger" onclick="run()">Run</button>
+        <button class="button" onclick="run()"> <span>Run</span></button>
         <button
-          class="btn btn-danger"
+          class="button"
           onclick="saveTextAsFile()"
         >
-          Download
+          <span>Download</span>
         </button>
         <img
           class="logo"
@@ -47,11 +51,9 @@
         <h4>Output (Console)</h4>
         <div id="preview"></div>
       </div>
+      
     </div>
-    <div class="ins__preview">
-      <b>Instructions:</b>
-      <div class="ins" id="ins"></div>
-    </div>
+  
 
     <script>
       var require = {

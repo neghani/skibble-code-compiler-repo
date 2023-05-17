@@ -92,7 +92,7 @@ function init() {
     value: code,
     language: lang,
     fontSize: "16px",
-    theme: "vs-dark",
+    
     automaticLayout: true, // <<== the important part
   });
   readTextFile(file_path);
